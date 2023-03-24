@@ -1,0 +1,25 @@
+
+You : hello 
+Jarvis : hi
+You : how are you 
+Jarvis: I'm good, how are you?
+You : i m fine 
+Jarvis :That's great!
+You : my name is kishan dev. 
+Jarvis :Nice to meet you, Kishan Dev!
+You : it is pleasure meeting you too. 
+Jarvis :The pleasure is mine!
+You : hello 
+Jarvis : Hello, how are you?
+You : im fine. 
+Jarvis : I'm glad to hear that you're doing well!
+You : where are you from? 
+Jarvis : I'm from the United States.
+You : which city? 
+Jarvis : I'm from the city of New York.
+You : what is the capital of us? 
+Jarvis : The capital of the United States is Washington, D.C.
+You : how many states are there in us? 
+Jarvis : There are fifty states in the United States.
+You : list them all. 
+Jarvis : The fifty states in the United States are Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York North Carolina , North Dakota , Ohio , Oklahoma , Oregon , Pennsylvania , Rhode Island , South Carolina , South Dakota , Tennessee , Texas , Utah , Vermont , Virginia Washington West Virginia Wisconsin Wyoming
