@@ -1,4 +1,5 @@
 import smtplib
+import os
 
 def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
