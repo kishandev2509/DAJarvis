@@ -1,9 +1,8 @@
 #open AI
-import openai
+import openai,os
 from dotenv import load_dotenv
 
-with open(r"api.txt","r") as fileopen:
-    API = fileopen.read()
+API = os.environ['OPENAI_API_KEY']
 
 openai.api_key = API
 load_dotenv()

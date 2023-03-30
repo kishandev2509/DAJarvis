@@ -1,25 +1,50 @@
+import wikipedia,webbrowser,pywhatkit,random,pyjokes,wolframalpha,psutil,os,sys,datetime,pyautogui
 from Listen import listen, sListen
 from AIBrain import getResponse
 from GreetMe import greetMe
 from Speak import speak
 from PyQt5 import QtCore
-from translator import translate
+from Translatr import translate
 from MailSender import sendEmail
-import wikipedia
-import webbrowser
-import pywhatkit
-import random
-import pyjokes
-import wolframalpha
-import psutil
-import os
-import sys
-import datetime
-import pyautogui
+# from UI import Ui_Jarvis
+
+# def print(txt):
+#    Ui_Jarvis.textEdit.append(txt)
 
 app = wolframalpha.Client("TWTKXX-TELTXEY6QK")
 
-intro, intro_reply, intro2,intro2_reply ,hru ,hru_reply, ability, ability_reply, emotion, emotion_reply, siri, siri_reply , create , punjabi , slow , temprature , app , Battery , vol1, vol2 ,vol_mute, dict_app, temprature,create , punjabi , science , close , cal= []
+
+intro = ["hello", 'hi"","hey jarvis","wake up', 'hello jarvis']
+intro_reply = ["HI SIR!!! How Are You", "YO YO Sir...Whats going On...How Are You?", "Hello Sir...How You Doing"]
+hru = ["how are you", "i am fine and you",'i am good and you', "how you doing", "whats up", 'i am good how are you','i am fine how are you']
+hru_reply = ["I am in Excellent Condition Sir!...All Thanks To you",
+             "Nothing Much Sir...Lets Start The Work..Any Command For Me?",
+             "I am Good Sir..Thanks for Asking...How can i help you?"]
+ability = ['what can you do', 'what is your ability','jarvis what can you do','jarvis what are your abilities','what are your abilities']
+ability_reply = [
+    "Sir i can do all the things Mr. Jegmeet Singh featured in me...Like i can search Anything on Google...I can Open youtube And Search Anything On Youtube...I Can Openstackoverflow If You Have Codes Related Doubts... I can Play music for you...i can do mathematical problems and Chemistry Problems...I Can Tell You Some Lame Jokes...I Can Increase And Decrease The Volume And Even I can Mute The Volume...I Can Tell You About The Battery Percentage... I can tell you what's the time.... and last but not the least...i can send email for you on a given email account ",
+    "Except Launching Rocket...I can do All The things You Functioned in me...I Can Answer Your Mathematical And Chemistry Questions... I can open Google And Search Anything On Google And Youtube...I Can Open Stackoverflow If You Have Doubts With Some Codes... I Can Play Music For You...And Can Send Email...I Can Call Your GirlFriend...Anndd I Can Tell Your Teachers That You Did Not Pay Attention In Online Classes...Just Kidding...HEHE"]
+intro2 = ['introduce', 'introduction of yourself', 'introduce yourself', 'introduce yourself Jarvis']
+intro2_reply = [
+    "Greetings, I am Jarvis, your personal digital assistant. I am an advanced computer program designed to assist you with a wide range of tasks and make your life easier. I am equipped with cutting-edge artificial intelligence technology that allows me to understand and respond to your commands and queries in a natural and intuitive manner. How can i help you? ",
+    " I Am JARVIS.. A Standalone Personal AI Assistant That listens To Your Voice Using Google’s Speech API And Uses AI Generated Speech To Respond To Your Requests.. How Can I Help You"]
+emotion = ['emotions', 'feelings', 'can you feel like humans', 'do you have emotions']
+emotion_reply = ["Sir...If I had Emotions...Alexa Would Be Definitely My Crush"]
+siri = ["siri", "what about siri", "why not siri"]
+siri_reply = ["Nahhh....I Can't afford her..She is a Daughter of Rich Father"]
+cal=["jarvis calculate","jarvis can you calculate","do calculation",'jarvis time to do some calculation','jarvis its time for some calculation ','jarvis can you do calculation']
+science= ["can you solve scientific question","can you solve a science question","solve a science question","jarvis can you solve scientific question","jarvis do a science question","jarvis solve a science question",'jarvis do a chemistry question','can you solve a chemistry question','jarvis can you solve a chemistry question','do a chemistry question']
+slow=["why are you slow","you are recognising slow","process fast","you are recognizing slow","why are you are recognising slow"]
+close=["you can sleep now","ok go oflline jarvis","go sleep","go offline",'you can go offline now','jarvis go offline now']
+Battery=[ "jarvis how much power left", "jarvis how much power we have","jarvis what is battery status","jarvis check battery","how much power we left", "how much power we have","battery","check battery","tell me battery percentage",'jarvis what is the battery percentage']
+vol1=['jarvis volume up','volume up','can you increase the volume','jarvis can you increase the volume']
+vol2=['jarvis volume down','volume down','can you decrease the volume','jarvis can you decrease the volume']
+vol_mute=['jarvis mute the volume','mute','jarvis mute','can you mute the volume','jarvis can you mute the volume','jarvis go mute']
+dict_app= {"command prompt": "cmd","paint":"mspaint","chrome": "chrome","excel":"EXCEL","word":"WINWORD","powerpoint":"powerpnt","vs code":"code","notepad":"Notepad"}
+temprature=["jarvis can you tell me the  temperature","tell me the temperature","tell me the temperature outside","what is the temperature outside","what is the temperature"]
+create = ['who created you','who made you','who developed you','jarvis who created you','jarvis who made you','jarvis who developed you']
+punjabi = ['jarvis can you speak punjabi','jarvis do you know punjabi','can you speak in punjabi','jarvis can you speak in punjabi']
+
 
 class MainThread(QtCore.QThread):
     def __init__(self):
@@ -49,8 +74,8 @@ class MainThread(QtCore.QThread):
 
                     case _ if 'wikipedia' in query:
                         speak('Searching Wikipedia...')
-                        self.query = self.query.replace("wikipedia", "")
-                        results = wikipedia.summary(self.query, sentences=2)
+                        query = query.replace("wikipedia", "")
+                        results = wikipedia.summary(query, sentences=2)
                         speak("According to Wikipedia")
                         print(results)
                         speak(results)
@@ -63,10 +88,10 @@ class MainThread(QtCore.QThread):
                         RES = webbrowser.open("google.com")
                         speak("Alright sir!!,opening Google")
                             
-                    case _ if 'on youtube' in self.query:
-                        OPEN = self.query.replace("search","")
-                        OPEN = self.query.replace("jarvis","")
-                        OPEN = self.query.replace("play","")
+                    case _ if 'on youtube' in query:
+                        OPEN = query.replace("search","")
+                        OPEN = query.replace("jarvis","")
+                        OPEN = query.replace("play","")
                         pywhatkit.playonyt(OPEN)
                         speak("Alright Sir...I Found Something")
 
@@ -90,7 +115,7 @@ class MainThread(QtCore.QThread):
                         
                     case _ if query in create:
 
-                        speak("Sir Mr. Jegmeet Singh Created Me With The Help Of Mr. Dettinder...I Appericiate Their Hard Work...I Was Successfully Developed After Many Failures Faced By Them...Mr. Jegmeet And Datitnder...If You Are Listening...I LOVE YOU 3000")
+                        speak("I am develped by Anjali Priyadarshini and her team...I Appericiate Their Hard Work...I Was Successfully Developed After Many Failures Faced By Them. ")
 
                     case _ if query in punjabi:
 
@@ -100,11 +125,11 @@ class MainThread(QtCore.QThread):
 
                         speak("Sir I am Processing Slow Because Internet Connection is NOT Stable...I Apologize For That ")
                     
-                    case _ if self.query in temprature:
+                    case _ if query in temprature:
                         try:
                             speak("Please tell the name of city...Please Say Temperature in And Give The City Name")
                             print("Please tell me The name of city")
-                            tempra = self.takeCommand().lower()
+                            tempra = listen().lower()
                             tempra_res = app.query(tempra)
                             speak(next(tempra_res.results).text)
                             print(next(tempra_res.results).text)
@@ -112,35 +137,35 @@ class MainThread(QtCore.QThread):
                         except:
                             speak("sorry i could NOT fetch your data")
 
-                    case _ if 'joke' in self.query:
+                    case _ if 'joke' in query:
                         joke = pyjokes.get_joke()
                         print(joke)
                         speak(joke)
 
-                    case _ if  'google search' in self.query:
+                    case _ if  'google search' in query:
                         import wikipedia as googleScrap
 
-                        self.query = self.query.replace("jarvis", "")
-                        self.query = self.query.replace("google search", "")
-                        self.query = self.query.replace("google", "")
-                        self.query = self.query.replace("about", "")
+                        query = query.replace("jarvis", "")
+                        query = query.replace("google search", "")
+                        query = query.replace("google", "")
+                        query = query.replace("about", "")
                         speak("This Is What I Found On The Web!")
                         print("This Is What I Found On The Web!")
-                        pywhatkit.search(self.query)
+                        pywhatkit.search(query)
                         try:
 
-                            result = googleScrap.summary(self.query, 3)
+                            result = googleScrap.summary(query, 3)
                             speak(result)
                         except:
                             speak("sorry...i did not found anything")
 
-                    case _ if  'open stackoverflow' in self.query:
+                    case _ if  'open stackoverflow' in query:
                         webbrowser.open("stackoverflow.com")
 
-                    case _ if  'say good about me' in self.query:
+                    case _ if  'say good about me' in query:
                         speak("I believe you will become python developer one day...keep it up i am with you")
 
-                    case _ if  self.query in Battery:
+                    case _ if  query in Battery:
                         battery = psutil.sensors_battery()
                         percentage= battery.percent
                         if percentage>=75:
@@ -152,35 +177,35 @@ class MainThread(QtCore.QThread):
                         else:
                             speak(f"Sir Our System Have {percentage} Percent battery...Battery Will Die Soon...You Need Charge Your Device As Soon AS Possible ")
 
-                    case _ if  'play music' in self.query:
+                    case _ if  'play music' in query:
                         music_dir = 'C:\\Users\\DELL\\Music\\Playlists'
                         songs = os.listdir(music_dir)
                         print(songs)
                         os.startfile(os.path.join(music_dir, songs[0]))
 
-                    case _ if  'the time' in self.query:
+                    case _ if  'the time' in query:
                         strTime = datetime.datetime.now().strftime("%I:%M:%p")
                         speak(f"Sir, the time is {strTime}")
 
 
 
-                    case _ if  self.query in vol1:
+                    case _ if  query in vol1:
                         speak("OK SIR!,Increasing Volume")
                         pyautogui.press("volumeup")
 
-                    case _ if  self.query in vol2:
+                    case _ if  query in vol2:
                         speak("Alright Sir!...Deacreasing Volume")
                         pyautogui.press("volumedown")
 
-                    case _ if  self.query in vol_mute:
+                    case _ if  query in vol_mute:
                         speak("OK Sir...Going Mute")
                         pyautogui.press("volumemute")
 
-                    case _ if  'email to me' in self.query:
+                    case _ if  'email to me' in query:
                         try:
                             speak("What should I say?")
                         
-                            content = self.takeCommand()
+                            content = listen()
                             to = "sidhugurjant587@gmail.com"
                             sendEmail(to, content)
                             speak("Email has been sent!")
@@ -189,12 +214,12 @@ class MainThread(QtCore.QThread):
                             print(e)
                             speak("Sorry my friend . I am not able to send this email")
 
-                    case _ if  self.query in cal:
+                    case _ if  query in cal:
 
                         try:
                             speak("what should i calculate")
                             print("what should i calculate")
-                            CAL=self.takeCommand().lower()
+                            CAL=listen().lower()
                             RES=app.query(CAL)
                             speak(next(RES.results).text)
                             print(next(RES.results).text)
@@ -202,32 +227,32 @@ class MainThread(QtCore.QThread):
                         except:
                             speak("sorry i could NOT fetch your data")
 
-                    case _ if  self.query in science:
+                    case _ if  query in science:
                         try:
                             speak("Please Tell me...What's The Question")
                             print("Please Tell me...What's The Question")
-                            qs=self.takeCommand().lower()
+                            qs=listen().lower()
                             ans=app.query(qs)
                             speak(next(ans.results).text)
                             print(next(ans.results).text)
                         except:
                             speak("sorry i could not process your data")
 
-                    case _ if  self.query in close:
+                    case _ if  query in close:
                         speak("Aright Sir... I AM Going Offline...You Can Call Me Anytime")
                         sys.exit()
-                    case _  if  '.com' in self.query or '.org' in self.query or '.in' in self.query:
-                        if  '.com' in self.query or '.org' in self.query or '.in' in self.query:
-                            self.query = self.query.replace('open', '')
-                            self.query = self.query.replace('jarvis', '')
-                            self.query = self.query.replace('launch', '')
-                            self.query = self.query.replace(' ', '')
-                            webbrowser.open(self.query)
-                            speak(f"Alright Sir opening {self.query}")
+                    case _  if  '.com' in query or '.org' in query or '.in' in query:
+                        if  '.com' in query or '.org' in query or '.in' in query:
+                            query = query.replace('open', '')
+                            query = query.replace('jarvis', '')
+                            query = query.replace('launch', '')
+                            query = query.replace(' ', '')
+                            webbrowser.open(query)
+                            speak(f"Alright Sir opening {query}")
                         else:
                             apps = list(dict_app.keys())
                             for ap in apps:
-                                if ap in self.query:
+                                if ap in query:
                                     os.system(f"start {dict_app[ap]}")
                                     speak(f"Alright Sir opening {ap}")
                                     print(f"Alright Sir opening {ap}")
@@ -237,223 +262,9 @@ class MainThread(QtCore.QThread):
                         print(f"{answer}\n")
                         speak(answer)
 
-
                     case _ :
                         continue
-
 
             except:
                 continue
 
-
-
-            # query = listen().lower()
-            # try:
-            #     # if query == "goodbye jarvis":
-            #     #     self.wakeup()
-            #     # case _ if  query != "None":
-            #     #     answer = getResponse(translate(query).text)
-            #     #     print(f"{answer}\n")
-            #     #     speak(answer)
-
-                    
-            #     # if 'wikipedia' in self.query:
-            #     #     speak('Searching Wikipedia...')
-            #     #     self.query = self.query.replace("wikipedia", "")
-            #     #     results = wikipedia.summary(self.query, sentences=2)
-            #     #     speak("According to Wikipedia")
-            #     #     print(results)
-            #     #     speak(results)
-
-            #     # elif 'open youtube' in self.query:
-            #     #     RES = webbrowser.open("youtube.com")
-            #     #     speak("Alright sir!!,opening Youtube")
-
-            #     # elif 'on youtube' in self.query:
-            #     #     OPEN = self.query.replace("search","")
-            #     #     OPEN = self.query.replace("jarvis","")
-            #     #     OPEN = self.query.replace("play","")
-            #     #     pywhatkit.playonyt(OPEN)
-            #     #     speak("Alright Sir...I Found Something")
-
-
-            #     # elif 'open google' in self.query:
-            #     #     webbrowser.open("google.com")
-            #     #     speak("Alright sir!!,opening Google")
-
-            #     # elif self.query in intro:
-            #     #     speak(random.choice(intro_reply))
-
-            #     # elif self.query in intro2:
-            #     #     speak(random.choice(intro2_reply))
-
-            #     # elif self.query in hru:
-            #     #     speak(random.choice(hru_reply))
-
-            #     # elif self.query in ability:
-            #     #     speak(random.choice(ability_reply))
-
-            #     # elif self.query in emotion:
-            #     #     speak(emotion_reply)
-
-            #     # elif self.query in siri:
-            #     #     speak(siri_reply)
-
-            #     # elif self.query in create:
-
-            #     #     speak("Sir Mr. Jegmeet Singh Created Me With The Help Of Mr. Dettinder...I Appericiate Their Hard Work...I Was Successfully Developed After Many Failures Faced By Them...Mr. Jegmeet And Datitnder...If You Are Listening...I LOVE YOU 3000")
-
-            #     # elif self.query in punjabi:
-
-            #     #     speak("MAINNU PUNJABI NAAHI AUNDDI MMAHAARRAJJ....It Will Take Some Time For Me To Learn Punjabi")    
-
-            #     # elif self.query in slow:
-
-            #     #     speak("Sir I am Processing Slow Because Internet Connection is NOT Stable...I Apologize For That ")
-
-            #     # elif self.query in temprature:
-            #         try:
-            #             speak("Please tell the name of city...Please Say Temperature in And Give The City Name")
-            #             print("Please tell me The name of city")
-            #             tempra = self.takeCommand().lower()
-            #             tempra_res = app.query(tempra)
-            #             speak(next(tempra_res.results).text)
-            #             print(next(tempra_res.results).text)
-
-            #         except:
-            #             speak("sorry i could NOT fetch your data")
-
-            #         if 'joke' in self.query:
-            #             joke = pyjokes.get_joke()
-            #             print(joke)
-            #             speak(joke)
-
-            #         elif 'google search' in self.query:
-            #             import wikipedia as googleScrap
-
-            #             self.query = self.query.replace("jarvis", "")
-            #             self.query = self.query.replace("google search", "")
-            #             self.query = self.query.replace("google", "")
-            #             self.query = self.query.replace("about", "")
-            #             speak("This Is What I Found On The Web!")
-            #             print("This Is What I Found On The Web!")
-            #             pywhatkit.search(self.query)
-            #             try:
-
-            #                 result = googleScrap.summary(self.query, 3)
-            #                 speak(result)
-            #             except:
-            #                 speak("sorry...i did not found anything")
-
-            #         elif 'open stackoverflow' in self.query:
-            #             webbrowser.open("stackoverflow.com")
-
-            #         elif 'say good about me' in self.query:
-            #             speak("I believe you will become python developer one day...keep it up i am with you")
-
-            #         elif self.query in Battery:
-            #             battery = psutil.sensors_battery()
-            #             percentage= battery.percent
-            #             if percentage>=75:
-            #                 speak(f"Sir Our System Have {percentage} Percent battery...That's Quite Enough...You Have Enough Power...Please Continue Your Work")
-            #             elif percentage>=45 and percentage<=75:
-            #                 speak(f"Sir Our System Have {percentage} % Percent battery...You Need To Charge The Device Soon...But We Can Do Some Tasks For Sometime")
-            #             elif percentage>=15 and percentage<=30:
-            #                 speak(f"Sir Our System Have {percentage} percent battery...We Don't HAve Enough POwer To Work...You Should Charge Your Device" )
-            #             else:
-            #                 speak(f"Sir Our System Have {percentage} Percent battery...Battery Will Die Soon...You Need Charge Your Device As Soon AS Possible ")
-
-            #         elif 'play music' in self.query:
-            #             music_dir = 'C:\\Users\\DELL\\Music\\Playlists'
-            #             songs = os.listdir(music_dir)
-            #             print(songs)
-            #             os.startfile(os.path.join(music_dir, songs[0]))
-
-            #         elif 'the time' in self.query:
-            #             strTime = datetime.datetime.now().strftime("%I:%M:%p")
-            #             speak(f"Sir, the time is {strTime}")
-
-
-
-            #         elif self.query in vol1:
-            #             speak("OK SIR!,Increasing Volume")
-            #             pyautogui.press("volumeup")
-
-            #         elif self.query in vol2:
-            #             speak("Alright Sir!...Deacreasing Volume")
-            #             pyautogui.press("volumedown")
-
-            #         elif self.query in vol_mute:
-            #             speak("OK Sir...Going Mute")
-            #             pyautogui.press("volumemute")
-
-            #         elif 'email to me' in self.query:
-            #             try:
-            #                 speak("What should I say?")
-                        
-            #                 content = self.takeCommand()
-            #                 to = "sidhugurjant587@gmail.com"
-            #                 sendEmail(to, content)
-            #                 speak("Email has been sent!")
-            #                 print("Email has been sent!")
-            #             except Exception as e:
-            #                 print(e)
-            #                 speak("Sorry my friend . I am not able to send this email")
-
-            #         elif self.query in cal:
-
-            #             try:
-            #                 speak("what should i calculate")
-            #                 print("what should i calculate")
-            #                 CAL=self.takeCommand().lower()
-            #                 RES=app.query(CAL)
-            #                 speak(next(RES.results).text)
-            #                 print(next(RES.results).text)
-
-            #             except:
-            #                 speak("sorry i could NOT fetch your data")
-
-            #         elif self.query in science:
-            #             try:
-            #                 speak("Please Tell me...What's The Question")
-            #                 print("Please Tell me...What's The Question")
-            #                 qs=self.takeCommand().lower()
-            #                 ans=app.query(qs)
-            #                 speak(next(ans.results).text)
-            #                 print(next(ans.results).text)
-            #             except:
-            #                 speak("sorry i could not process your data")
-
-            #         elif self.query in close:
-            #             speak("Aright Sir... I AM Going Offline...You Can Call Me Anytime")
-            #             sys.exit()
-            #         elif '.com' in self.query or '.org' in self.query or '.in' in self.query:
-            #             self.query = self.query.replace('open', '')
-            #             self.query = self.query.replace('jarvis', '')
-            #             self.query = self.query.replace('launch', '')
-            #             self.query = self.query.replace(' ', '')
-            #             webbrowser.open(self.query)
-            #             speak(f"Alright Sir opening {self.query}")
-            #         else:
-            #             apps = list(dict_app.keys())
-            #             for ap in apps:
-            #                 if ap in self.query:
-            #                     os.system(f"start {dict_app[ap]}")
-            #                     speak(f"Alright Sir opening {ap}")
-            #                     print(f"Alright Sir opening {ap}")
-
-            # except:
-            #     print("Please say that again\n")
-            #     speak("Please say that again\n")
-    
-
-
-
-if __name__ == "__main__":
-    from PyQt5.QtWidgets import *
-    from sys import argv, exit
-    Gui_App = QApplication(argv)
-    startfunc = MainThread()
-    startfunc.start()
-    exit(Gui_App.exec_())
-    
