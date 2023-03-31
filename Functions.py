@@ -206,7 +206,7 @@ class MainThread(QtCore.QThread):
                             speak("What should I say?")
                         
                             content = listen()
-                            to = "sidhugurjant587@gmail.com"
+                            to = "kishandevprajapati4@gmail.com"
                             sendEmail(to, content)
                             speak("Email has been sent!")
                             print("Email has been sent!")
