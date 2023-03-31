@@ -5,7 +5,7 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login(os.environ['UMAIL'],  os.environ['TMP'])
+    server.login(os.environ['UMAIL'],  os.environ['NTMP'])
     server.sendmail(os.environ['UMAIL'], to, content)
     server.close()
 

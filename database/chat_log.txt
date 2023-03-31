@@ -23,3 +23,37 @@ You : how many states are there in us?
 Jarvis : There are fifty states in the United States.
 You : list them all. 
 Jarvis : The fifty states in the United States are Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York North Carolina , North Dakota , Ohio , Oklahoma , Oregon , Pennsylvania , Rhode Island , South Carolina , South Dakota , Tennessee , Texas , Utah , Vermont , Virginia Washington West Virginia Wisconsin Wyoming
+You : how are you 
+Jarvis : I'm good, how are you?
+You : How are you 
+Jarvis : I'm good, how are you?
+You : Maine ok me 
+Jarvis : I'm sorry, I don't understand what you're trying to say. Can you please rephrase your question?
+You : Who is the prime minister of India 
+Jarvis : The prime minister of India is Narendra Modi.
+You : who is the international minister 
+Jarvis : The international minister of India is Sushma Swaraj.
+You : who is the finance minister of india 
+Jarvis : The finance minister of India is Arun Jaitley.
+You : Government Polytechnic College Majra 
+Jarvis : I'm sorry, I don't know what you're talking about.
+You : where is the government 
+Jarvis : The government is the group of people who have the authority to govern a country or state.
+You : chemical formula of sodium magnesium and iron 
+Jarvis : The chemical formula for sodium magnesium and iron is NaMgFe.
+You : how to calculate molar mass 
+Jarvis : To calculate molar mass, you need to know the atomic masses of the elements involved. Once you have that information, you can add up the atomic masses to get the molar mass.
+You : what is the difference between git and github 
+Jarvis : Git is a version control system that allows you to track changes to your code. GitHub is a platform that allows you to share your code with others.
+You : what is vcs 
+Jarvis : Version control systems (VCS) are tools that help developers manage changes to their code. VCSs allow developers to track changes, revert to previous versions if necessary, and collaborate with other developers on code development.
+You : how many type of vcs are there 
+Jarvis : There are two main types of version control systems: centralized and decentralized. Centralized version control systems (CVCSs) require users to check out code from a central server. Decentralized version control systems (DVCSs) allow users to check out code from any location.
+You : what is wordpress 
+Jarvis : WordPress is a content management system (CMS) that allows users to create and manage websites. WordPress is one of the most popular CMSs in use today, powering millions of websites around the world.
+You : how to install wordpress 
+Jarvis : There are a few different ways to install WordPress. You can install WordPress manually, or you can use a hosting service that provides WordPress installation as a part of their service. You can also use a tool like WordPress CLI to install WordPress.
+You : how many countries are there in total 
+Jarvis : There are 195 countries in the world.
+You : name all the countries 
+Jarvis : The countries of the world are: Afghanistan, Albania, Algeria, Andorra, Angola, Antigua and Barbuda, Argentina, Armenia, Australia, Austria, Azerbaijan, Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium, Belize, Benin, Bhutan, Bolivia, Bosnia and Herzegovina, Botswana, Brazil, Brunei Darussalam , Bulgaria , Burkina Faso , Burundi , Cambodia , Cameroon , Canada , Cape Verde , Central African Republic , Chad , Chile China Colombia Comoros Congo (Brazzaville) Congo Costa Rica Cote d'Ivoire Croatia Cuba Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Fiji Finland France Gabon Gambia Georgia Germany Ghana Greece Grenada Guatemala Guinea Guinea-Bissau Guyana Haiti Honduras Hungary Iceland India Indonesia Iran Iraq Ireland Israel Italy Jamaica Japan Jordan Kazakhstan Kenya Kiribati Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxembourg Macedonia Madagascar Malawi Malaysia Maldives Mali Malta Marshall Islands Mauritania Mauritius Mexico Micronesia Moldova Monaco Mongolia Montenegro Morocco Mozambique Myanmar Namibia Nauru Nepal Netherlands New Zealand Nicaragua Niger Nigeria Norway Oman Pakistan Palau Panama Papua New Guinea Paraguay Peru Philippines Poland Portugal Qatar Romania Russian Federation Rwanda Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines Samoa San Marino Sao Tome and Principe Saudi Arabia Senegal Serbia Seychelles Sierra Leone Singapore Slovakia Slovenia Solomon Islands Somalia South Africa South Sudan Spain Sri Lanka Sudan Suriname Swaziland Sweden Switzerland Syrian Arab Republic Taiwan Tajikistan Tanzania Thailand Timor-Leste Togo Tonga Trinidad and Tobago Tunisia Turkey Turkmenistan Tuvalu Uganda Ukraine United Arab Emirates United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican City Venezuela Viet Nam Yemen Zambia Zimbabwe
