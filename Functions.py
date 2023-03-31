@@ -115,7 +115,7 @@ class MainThread(QtCore.QThread):
                         
                     case _ if query in create:
 
-                        speak("I am develped by Anjali Priyadarshini and her team...I Appericiate Their Hard Work...I Was Successfully Developed After Many Failures Faced By Them. ")
+                        speak("I am develped by Anjali Priyadarshini and her team... I Appericiate Their Hard Work... I Was Successfully Developed After Many Failures Faced By Them.")
 
                     case _ if query in punjabi:
 
