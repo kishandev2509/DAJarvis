@@ -1,4 +1,4 @@
-import wikipedia,webbrowser,pywhatkit,random,pyjokes,wolframalpha,psutil,os,sys,datetime,pyautogui
+import wikipedia,webbrowser,pywhatkit,random,pyjokes,psutil,os,sys,datetime,pyautogui,subprocess
 from Listen import listen, sListen
 from AIBrain import getResponse
 from GreetMe import greetMe
@@ -11,8 +11,6 @@ from MailSender import sendEmail
 # def print(txt):
 #    Ui_Jarvis.textEdit.append(txt)
 
-app = wolframalpha.Client("TWTKXX-TELTXEY6QK")
-
 
 intro = ["hello", 'hi"","hey jarvis","wake up', 'hello jarvis']
 intro_reply = ["HI SIR!!! How Are You", "YO YO Sir...Whats going On...How Are You?", "Hello Sir...How You Doing"]
@@ -22,7 +20,7 @@ hru_reply = ["I am in Excellent Condition Sir!...All Thanks To you",
              "I am Good Sir..Thanks for Asking...How can i help you?"]
 ability = ['what can you do', 'what is your ability','jarvis what can you do','jarvis what are your abilities','what are your abilities']
 ability_reply = [
-    "Sir i can do all the things Mr. Jegmeet Singh featured in me...Like i can search Anything on Google...I can Open youtube And Search Anything On Youtube...I Can Openstackoverflow If You Have Codes Related Doubts... I can Play music for you...i can do mathematical problems and Chemistry Problems...I Can Tell You Some Lame Jokes...I Can Increase And Decrease The Volume And Even I can Mute The Volume...I Can Tell You About The Battery Percentage... I can tell you what's the time.... and last but not the least...i can send email for you on a given email account ",
+    "Sir i can do all the things Miss Anjali Priyadarshini featured in me...Like i can search Anything on Google...I can Open youtube And Search Anything On Youtube...I Can Openstackoverflow If You Have Codes Related Doubts... I can Play music for you...i can do mathematical problems and Chemistry Problems...I Can Tell You Some Lame Jokes...I Can Increase And Decrease The Volume And Even I can Mute The Volume...I Can Tell You About The Battery Percentage... I can tell you what's the time.... and last but not the least...i can send email for you on a given email account ",
     "Except Launching Rocket...I can do All The things You Functioned in me...I Can Answer Your Mathematical And Chemistry Questions... I can open Google And Search Anything On Google And Youtube...I Can Open Stackoverflow If You Have Doubts With Some Codes... I Can Play Music For You...And Can Send Email...I Can Call Your GirlFriend...Anndd I Can Tell Your Teachers That You Did Not Pay Attention In Online Classes...Just Kidding...HEHE"]
 intro2 = ['introduce', 'introduction of yourself', 'introduce yourself', 'introduce yourself Jarvis']
 intro2_reply = [
@@ -32,16 +30,13 @@ emotion = ['emotions', 'feelings', 'can you feel like humans', 'do you have emot
 emotion_reply = ["Sir...If I had Emotions...Alexa Would Be Definitely My Crush"]
 siri = ["siri", "what about siri", "why not siri"]
 siri_reply = ["Nahhh....I Can't afford her..She is a Daughter of Rich Father"]
-cal=["jarvis calculate","jarvis can you calculate","do calculation",'jarvis time to do some calculation','jarvis its time for some calculation ','jarvis can you do calculation']
-science= ["can you solve scientific question","can you solve a science question","solve a science question","jarvis can you solve scientific question","jarvis do a science question","jarvis solve a science question",'jarvis do a chemistry question','can you solve a chemistry question','jarvis can you solve a chemistry question','do a chemistry question']
 slow=["why are you slow","you are recognising slow","process fast","you are recognizing slow","why are you are recognising slow"]
 close=["you can sleep now","ok go oflline jarvis","go sleep","go offline",'you can go offline now','jarvis go offline now']
 Battery=[ "jarvis how much power left", "jarvis how much power we have","jarvis what is battery status","jarvis check battery","how much power we left", "how much power we have","battery","check battery","tell me battery percentage",'jarvis what is the battery percentage']
 vol1=['jarvis volume up','volume up','can you increase the volume','jarvis can you increase the volume']
 vol2=['jarvis volume down','volume down','can you decrease the volume','jarvis can you decrease the volume']
 vol_mute=['jarvis mute the volume','mute','jarvis mute','can you mute the volume','jarvis can you mute the volume','jarvis go mute']
-dict_app= {"command prompt": "cmd","paint":"mspaint","chrome": "chrome","excel":"EXCEL","word":"WINWORD","powerpoint":"powerpnt","vs code":"code","notepad":"Notepad"}
-temprature=["jarvis can you tell me the  temperature","tell me the temperature","tell me the temperature outside","what is the temperature outside","what is the temperature"]
+dict_app= {"command prompt": "cmd","cmd":"cmd","paint":"mspaint","chrome": "chrome","excel":"EXCEL","word":"WINWORD","powerpoint":"powerpnt","vs code":"code","notepad":"Notepad"}
 create = ['who created you','who made you','who developed you','jarvis who created you','jarvis who made you','jarvis who developed you']
 punjabi = ['jarvis can you speak punjabi','jarvis do you know punjabi','can you speak in punjabi','jarvis can you speak in punjabi']
 
@@ -84,6 +79,10 @@ class MainThread(QtCore.QThread):
                         RES = webbrowser.open("youtube.com")
                         speak("Alright sir!!,opening Youtube")
 
+                    case _ if 'open notepad' in query:
+                        subprocess.Popen(["notepad.exe"])
+                        speak("Alright sir!!,opening notepad")
+
                     case _ if 'open google' in query:
                         RES = webbrowser.open("google.com")
                         speak("Alright sir!!,opening Google")
@@ -124,18 +123,6 @@ class MainThread(QtCore.QThread):
                     case _ if query in slow:
 
                         speak("Sir I am Processing Slow Because Internet Connection is NOT Stable...I Apologize For That ")
-                    
-                    case _ if query in temprature:
-                        try:
-                            speak("Please tell the name of city...Please Say Temperature in And Give The City Name")
-                            print("Please tell me The name of city")
-                            tempra = listen().lower()
-                            tempra_res = app.query(tempra)
-                            speak(next(tempra_res.results).text)
-                            print(next(tempra_res.results).text)
-
-                        except:
-                            speak("sorry i could NOT fetch your data")
 
                     case _ if 'joke' in query:
                         joke = pyjokes.get_joke()
@@ -178,16 +165,15 @@ class MainThread(QtCore.QThread):
                             speak(f"Sir Our System Have {percentage} Percent battery...Battery Will Die Soon...You Need Charge Your Device As Soon AS Possible ")
 
                     case _ if  'play music' in query:
-                        music_dir = 'C:\\Users\\DELL\\Music\\Playlists'
+                        music_dir = r'C:\Users\KISHAN DEV\Desktop\Anjali\my songs'
                         songs = os.listdir(music_dir)
-                        print(songs)
-                        os.startfile(os.path.join(music_dir, songs[0]))
+                        song = random.choice(songs)
+                        # print(songs)
+                        os.startfile(os.path.join(music_dir, song))
 
                     case _ if  'the time' in query:
                         strTime = datetime.datetime.now().strftime("%I:%M:%p")
                         speak(f"Sir, the time is {strTime}")
-
-
 
                     case _ if  query in vol1:
                         speak("OK SIR!,Increasing Volume")
@@ -214,34 +200,10 @@ class MainThread(QtCore.QThread):
                             print(e)
                             speak("Sorry my friend . I am not able to send this email")
 
-                    case _ if  query in cal:
-
-                        try:
-                            speak("what should i calculate")
-                            print("what should i calculate")
-                            CAL=listen().lower()
-                            RES=app.query(CAL)
-                            speak(next(RES.results).text)
-                            print(next(RES.results).text)
-
-                        except:
-                            speak("sorry i could NOT fetch your data")
-
-                    case _ if  query in science:
-                        try:
-                            speak("Please Tell me...What's The Question")
-                            print("Please Tell me...What's The Question")
-                            qs=listen().lower()
-                            ans=app.query(qs)
-                            speak(next(ans.results).text)
-                            print(next(ans.results).text)
-                        except:
-                            speak("sorry i could not process your data")
-
                     case _ if  query in close:
                         speak("Aright Sir... I AM Going Offline...You Can Call Me Anytime")
                         sys.exit()
-                    case _  if  '.com' in query or '.org' in query or '.in' in query:
+                    case _  if  'open' in query:
                         if  '.com' in query or '.org' in query or '.in' in query:
                             query = query.replace('open', '')
                             query = query.replace('jarvis', '')
