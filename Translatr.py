@@ -1,4 +1,4 @@
-from googletrans import Translator
+from googletrans import Translator #pip install googletrans==3.1.0a0
 
 def translate(query):
     translator = Translator()
@@ -7,4 +7,4 @@ def translate(query):
 
 if __name__ == "__main__":
     translated = translate("kaise ho")
-    print(translated)
+    print(translated.text)

@@ -20,8 +20,8 @@ def listen():
 def sListen():
     with sr.Microphone() as source:
         r.pause_threshold = 1
-        r.energy_threshold = 100
-        audio = r.listen(source,0,6)
+        r.energy_threshold = 300
+        audio = r.listen(source,0,3)
         
     try:
         query = r.recognize_google(audio,language='en-in')
