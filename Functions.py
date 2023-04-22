@@ -114,6 +114,7 @@ class MainThread(QtCore.QThread):
                         
                     case _ if query in create:
 
+                        print("I am develped by Anjali Priyadarshini and her team... I Appericiate Their Hard Work... I Was Successfully Developed After Many Failures Faced By Them.")
                         speak("I am develped by Anjali Priyadarshini and her team... I Appericiate Their Hard Work... I Was Successfully Developed After Many Failures Faced By Them.")
 
                     case _ if query in punjabi:
@@ -129,7 +130,7 @@ class MainThread(QtCore.QThread):
                         print(joke)
                         speak(joke)
 
-                    case _ if  'google search' in query:
+                    case _ if  'google search' in query or 'on google' in query:
                         import wikipedia as googleScrap
 
                         query = query.replace("jarvis", "")
