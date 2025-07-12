@@ -136,12 +136,12 @@ Do **not** expose your `.env` file or credentials in public repositories.
 Special contributions by [@kishandev2509](https://github.com/kishandev2509)
 
 ---
-
+<!--
 ## 📜 License
 
 This project is licensed under the [MIT License](LICENSE)
 
----
+--->
 
 ## 📷 Screenshots
 
