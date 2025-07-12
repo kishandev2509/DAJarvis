@@ -1,0 +1,11 @@
+openai
+python-dotenv
+pyttsx3
+SpeechRecognition
+pywhatkit
+wikipedia
+pyjokes
+psutil
+pyautogui
+googletrans==3.1.0a0
+PyQt5
